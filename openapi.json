@@ -1,23 +1,119 @@
 {
-  "openapi": "3.0.2",
-  "info": {
-    "title": "scores4all",
-    "description": "Score your leads and win!"
-  },
-  "paths": {
-    "/get": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "Example GET service which echoes its inputs"
+    "openapi": "3.0.2",
+    "info": {
+      "title": "FastAPI",
+      "version": "0.1.0"
+    },
+    "paths": {
+      "/scorefile/": {
+        "post": {
+          "summary": "Train Score And Return File",
+          "operationId": "train_score_and_return_file_scorefile__post",
+          "parameters": [
+            {
+              "required": false,
+              "schema": {
+                "title": "Targetcol",
+                "type": "string",
+                "default": "target"
+              },
+              "name": "targetCol",
+              "in": "query"
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "$ref": "#/components/schemas/Body_train_score_and_return_file_scorefile__post"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "servers": [
+      {
+        "url": "https://app-4b22ad1d-2850-4054-84f3-de7bec9aa347.cleverapps.io"
+      }
+    ],
+    "components": {
+      "schemas": {
+        "Body_train_score_and_return_file_scorefile__post": {
+          "title": "Body_train_score_and_return_file_scorefile__post",
+          "required": [
+            "file"
+          ],
+          "type": "object",
+          "properties": {
+            "file": {
+              "title": "File",
+              "type": "string",
+              "format": "binary"
+            }
+          }
+        },
+        "HTTPValidationError": {
+          "title": "HTTPValidationError",
+          "type": "object",
+          "properties": {
+            "detail": {
+              "title": "Detail",
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ValidationError"
+              }
+            }
+          }
+        },
+        "ValidationError": {
+          "title": "ValidationError",
+          "required": [
+            "loc",
+            "msg",
+            "type"
+          ],
+          "type": "object",
+          "properties": {
+            "loc": {
+              "title": "Location",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "msg": {
+              "title": "Message",
+              "type": "string"
+            },
+            "type": {
+              "title": "Error Type",
+              "type": "string"
+            }
           }
         }
       }
     }
-  },
-  "servers": [
-    {
-      "url": "https://httpbin.org"
-    }
-  ]
-}
+  }

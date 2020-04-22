@@ -1,4 +1,122 @@
-{
+{ 
   "name": "scores4all",
-  "openapi": "./openapi.json"
+  "openapi": "openapi.json",
+  "authProviders": {
+    "google":{
+      "enabled":true,
+      "scopes": []
+    },
+    "github":{
+      "enabled":false
+    }
+  },
+  "saas": {
+    "name": "Scores 4 all",
+    "heading": "Find better leads",
+    "subheading": "Close more deals and improve your ROI with lead scoring that works.\n&nbsp;  \n&nbsp;  \nBased on custom machine learning models that are tailored to your data.",
+    "theme": {
+      "name": "waves",
+      "buttonStyle": "rounded",
+      "color": "#49d49d",
+      "gradientDark": true,
+      "codeBlockDark": true,
+      "backgroundImage": "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80"
+    },
+    "sections": {
+      "pricing": {
+        "showMeteredBilling": false
+      },
+      "hero": {
+        "cta": "Get started for free"
+      },
+      "demo": false
+    },
+    "features": [
+      {
+        "name": "Simple setup",
+        "desc": "We make it easy to get started for **free**. Just upload some users from your CRM or use our test data to try things out.",
+        "icon": "media/icons/setup.svg"
+      },
+      {
+        "name": "Simple pricing",
+        "desc": "Your first 1000 leads are free. No CC required. Then pay based on the number of leads you score each month.",
+        "icon": "media/icons/stripe.svg"
+      },
+      {
+        "name": "Improve your ROI",
+        "desc": "Qualifying your leads with machine learning gives you a serious advantage over your competitors.",
+        "icon": "media/icons/powerful.svg"
+      },
+      {
+        "name": "Customizable",
+        "desc": "Upload as many datasets as you want -- we'll create custom ML models for each one.",
+        "icon": "media/icons/customizable.svg"
+      },
+      {
+        "name": "Secure & private",
+        "desc": "We never store the data that you upload. We only store the anonymous metadata for the ML models that are derived from your data.",
+        "icon": "media/icons/secure.svg"
+      },
+      {
+        "name": "State of the art",
+        "desc": "We create personalized, enterprise-grade machine learning models on-the-fly for each of our users.",
+        "icon": "media/icons/cluster.svg"
+      },
+      {
+        "name": "Global scale",
+        "desc": "Our machine learning models have been used to help improve business operations in over a dozen countries around the world.",
+        "icon": "media/icons/global.svg"
+      },
+      {
+        "name": "Powerful API",
+        "desc": "Advanced integrations available programatically via our [REST API](/docs#section/API).",
+        "icon": "media/icons/api.svg"
+      }
+    ]
+  },
+  "pricingPlans": [
+    {
+      "name": "Free",
+      "rateLimit": null,
+      "metrics": [
+        {
+          "slug": "leads",
+          "usageType": "metered",
+          "amount": 0
+        }
+      ],
+      "features": [
+        "Get started with your first 1000 leads for **free**.",
+        "No credit card required."
+      ]
+    },
+    {
+      "name": "Unlimited",
+      "amount": 990,
+      "rateLimit": null,
+      "metrics": [
+        {
+          "slug": "leads",
+          "usageType": "metered",
+          "billingScheme": "tiered",
+          "tiersMode": "graduated",
+          "tiers": [
+            {
+              "upTo": 5000,
+              "flatAmount": 0
+            },
+            {
+              "upTo": "inf",
+              "unitAmount": 5
+            }
+          ]
+        }
+      ],
+      "features": [
+        "Upload an unlimited number of models and data sets.",
+        "Your first 5000 leads every month are included.",
+        "Additional leads cost $0.05 per lead."
+      ]
+    }
+  ]
 }
